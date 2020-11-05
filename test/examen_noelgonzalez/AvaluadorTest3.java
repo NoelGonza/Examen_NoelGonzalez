@@ -93,7 +93,7 @@ public class AvaluadorTest3 {
         avaluador = null;
     }
     
-    //TEST DE LA CLASE MITJANA SI SUPERA
+    //TEST DE LA CLASE MILLOR ESTUDIANT
 
     /**
      * Test of mitjanaSiSupera method, of class Avaluador.
