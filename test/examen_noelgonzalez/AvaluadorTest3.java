@@ -27,31 +27,46 @@ public class AvaluadorTest3 {
     private Avaluador avaluador;
     
     @Parameterized.Parameter(0)
-    public Estudiant alumno;
+    public Estudiant alumno1;
     
     @Parameterized.Parameter(1)
-    public double total;
+    public Estudiant alumno2;
+    
+    @Parameterized.Parameter(2)
+    public Estudiant alumno3;
+    
+    @Parameterized.Parameter(3)
+    public Estudiant mejor;
     
     @Parameterized.Parameters
     public static Collection<Object[]> data() {        
         
         Object[][] data = new Object[][] {
             
-            {new Estudiant ("Noel", 12.0, 11.0, 13.0), 12.0},
-            {new Estudiant ("Rosa", 10.0, 10.0, 13.0), 11.0},
-            {new Estudiant ("Pepe", 20.0, 10.0, 12.0), 14.0},
-            {new Estudiant ("Manuel", 15.0, 12.0, 16.0), 14.33}, 
-            {new Estudiant ("Biel", 15.0, 11.0, 18.0), 14.66},
-            {new Estudiant ("Itziar", 18.0, 20.0, 12.0), 16.66}, 
-            {new Estudiant ("Ana", 17.0, 12.0, 16.0), 15.0},
-            {new Estudiant ("Mireia", 18.0, 19.0, 16.0), 17.66}, 
-            {new Estudiant ("Joan", 12.0, 15.0, 14.0), 13.66},
-            {new Estudiant ("Adri", 10.0, 11.0, 13.0), 11.33}, 
-            {new Estudiant ("Fran", 16.0, 20.0, 12.0), 16.0},
-            {new Estudiant ("David", 14.0, 13.0, 17.0), 14.66}, 
-            {new Estudiant ("Pablo", 12.0, 14.0, 16.0), 14.0},
-            {new Estudiant ("Lucas", 15.0, 10.0, 13.0), 12.66}, 
-            {new Estudiant ("Marc", 12.0, 16.0, 14.0), 14.0} 
+            {new Estudiant ("Noel", 12.0, 11.0, 13.0),
+             new Estudiant ("Rosa", 10.0, 10.0, 13.0),
+             new Estudiant ("Pepe", 18.0, 10.0, 12.0),
+             new Estudiant ("Pepe", 18.0, 10.0, 12.0)},
+            
+            {new Estudiant ("Manuel", 15.0, 12.0, 16.0),
+             new Estudiant ("Biel", 15.0, 11.0, 18.0),
+             new Estudiant ("Itziar", 18.0, 16.0, 12.0),
+             new Estudiant ("Itziar", 18.0, 16.0, 12.0)},
+            
+            {new Estudiant ("Ana", 17.0, 12.0, 16.0),
+             new Estudiant ("Mireia", 18.0, 19.0, 16.0),
+             new Estudiant ("Joan", 12.0, 15.0, 14.0),
+             new Estudiant ("Mireia", 18.0, 19.0, 16.0)},
+            
+            {new Estudiant ("Adri", 10.0, 11.0, 13.0),
+             new Estudiant ("Fran", 16.0, 20.0, 12.0),
+             new Estudiant ("David", 14.0, 13.0, 17.0),
+             new Estudiant ("Fran", 16.0, 20.0, 12.0)},
+                
+            {new Estudiant ("Pablo", 12.0, 15.0, 16.0),
+             new Estudiant ("Lucas", 15.0, 10.0, 13.0),
+             new Estudiant ("Marc", 12.0, 16.0, 14.0),
+             new Estudiant ("Pablo", 12.0, 15.0, 16.0)},
         };
         return Arrays.asList(data);
     }
@@ -75,7 +90,6 @@ public class AvaluadorTest3 {
     
     @After
     public void tearDown() {
-        alumno = null;
         avaluador = null;
     }
     
@@ -106,6 +120,11 @@ public class AvaluadorTest3 {
      */
     @Test
     public void testMillorEstudiantPerNotaMitjana() throws Exception {
+        Estudiant array[] = new Estudiant[3];
+        array[0] = alumno1;
+        array[1] = alumno2;
+        array[2] = alumno3;
+        
         avaluador = new Avaluador(20,0,10);
         assertEquals(mejor, avaluador.millorEstudiantPerNotaMitjana(array));
     }
